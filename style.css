@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   min-height: 100vh;
   background-color: rgb(40, 40, 40);
   padding-top: 13px;
@@ -79,5 +79,5 @@ body {
 }
 
 .content {
-  padding-top: 60px;
+  padding-top: 55px;
 }
