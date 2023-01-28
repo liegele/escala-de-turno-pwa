@@ -4,7 +4,8 @@ const exibirEscala = function () {
 
 document.addEventListener('DOMContentLoaded', exibirEscala);
 
-//serviveWorker.js registration
+//Registrando o serviveWorker.js
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker
