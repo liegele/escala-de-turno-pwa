@@ -1,11 +1,35 @@
 const container = document.querySelector('main');
 
-const exibirEscala = function () {
-  const dataInicial = new Date('01/01/2023');
+let statusQtdeDias = 0;
+let dataStop = new Date();
+
+const grupo = {
+  a: {
+    inicio: 0,
+  },
+  b: {
+    inicio: 4,
+  },
+  c: {
+    inicio: 2,
+  },
+  d: {
+    inicio: 8,
+  },
+  e: {
+    inicio: 6,
+  },
+  reiniciar(x) {
+    x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
+  },
+};
+
+const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
+  const dataInicial = new Date(dataStatus);
   const dataFinal = new Date('12/31/2025');
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
   const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
-  const grupo = {
+  /* const grupo = {
     a: {
       inicio: 0,
     },
@@ -24,13 +48,14 @@ const exibirEscala = function () {
     reiniciar(x) {
       x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
     },
-  };
+  }; */
 
   const dt = new Date(dataInicial);
   const hoje = new Date();
   console.log(hoje.toLocaleDateString('pt-BR'));
 
-  while (dt <= dataFinal) {
+  // while (dt <= dataFinal) {
+  while (statusQtdeDias <= qtdeDias) {
     let evento = new Date(dt);
     const fimDeSemana =
       evento.getDay() === 0 || evento.getDay() === 6
@@ -72,10 +97,14 @@ const exibirEscala = function () {
 
     container.insertAdjacentHTML('beforeend', html);
     dt.setDate(dt.getDate() + 1);
+    dataStop.setDate(dt.getDate() + 1);
+    statusQtdeDias += 1;
   }
+  console.log(dataStop);
+  statusQtdeDias = 0;
 };
 
-document.addEventListener('DOMContentLoaded', exibirEscala);
+document.addEventListener('DOMContentLoaded', exibirEscala(89, '01/01/2023'));
 
 //Verificando o fim da página par exibir mais datas.
 window.addEventListener('scroll', () => {
@@ -83,6 +112,7 @@ window.addEventListener('scroll', () => {
     window.scrollY + window.innerHeight >=
     window.document.documentElement.scrollHeight
   ) {
+    exibirEscala(89, dataStop);
     console.log('fim da página');
   }
 });
@@ -101,3 +131,81 @@ document.querySelector('#hoje').scrollIntoView({ behavior: 'smooth' }); */
       .catch((err) => console.log('service worker not registered', err));
   });
 } */
+
+// const exibirEscala = function (qtdeDias) {
+//   const dataInicial = new Date('01/01/2023');
+//   const dataFinal = new Date('12/31/2025');
+//   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
+//   const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+//   /* const grupo = {
+//     a: {
+//       inicio: 0,
+//     },
+//     b: {
+//       inicio: 4,
+//     },
+//     c: {
+//       inicio: 2,
+//     },
+//     d: {
+//       inicio: 8,
+//     },
+//     e: {
+//       inicio: 6,
+//     },
+//     reiniciar(x) {
+//       x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
+//     },
+//   }; */
+
+//   const dt = new Date(dataInicial);
+//   const hoje = new Date();
+//   console.log(hoje.toLocaleDateString('pt-BR'));
+
+//   // while (dt <= dataFinal) {
+//   while (statusQtdeDias <= qtdeDias) {
+//     let evento = new Date(dt);
+//     const fimDeSemana =
+//       evento.getDay() === 0 || evento.getDay() === 6
+//         ? 'grid-item-weekend'
+//         : 'grid-item';
+//     let html = `
+//     <div class="grid-container">
+//       <div class="${fimDeSemana}" id="${
+//       hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+//         ? 'hoje'
+//         : ''
+//     }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
+//       diaSemana[evento.getDay()]
+//     }</div></div>
+//       <div class="${fimDeSemana} ${
+//       escala[grupo.a.inicio] === 'F' ? 'folga' : ''
+//     }">${escala[grupo.a.inicio]}</div>
+//       <div class="${fimDeSemana} ${
+//       escala[grupo.b.inicio] === 'F' ? 'folga' : ''
+//     }">${escala[grupo.b.inicio]}</div>
+//       <div class="${fimDeSemana} ${
+//       escala[grupo.c.inicio] === 'F' ? 'folga' : ''
+//     }">${escala[grupo.c.inicio]}</div>
+//       <div class="${fimDeSemana} ${
+//       escala[grupo.d.inicio] === 'F' ? 'folga' : ''
+//     }">${escala[grupo.d.inicio]}</div>
+//       <div class="${fimDeSemana} ${
+//       escala[grupo.e.inicio] === 'F' ? 'folga' : ''
+//     }">${escala[grupo.e.inicio]}</div>
+//     </div>
+//     `;
+
+//     //Reinicializando contador dos grupos.
+//     grupo.reiniciar(grupo.a);
+//     grupo.reiniciar(grupo.b);
+//     grupo.reiniciar(grupo.c);
+//     grupo.reiniciar(grupo.d);
+//     grupo.reiniciar(grupo.e);
+
+//     container.insertAdjacentHTML('beforeend', html);
+//     dt.setDate(dt.getDate() + 1);
+//     statusQtdeDias += 1;
+//   }
+//   statusQtdeDias = 0;
+// };
