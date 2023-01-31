@@ -9,7 +9,7 @@ body {
   font-size: 16px;
   min-height: 100vh;
   background-color: rgb(40, 40, 40);
-  padding-top: 13px;
+  padding-top: 0px;
   user-select: none;
 }
 
@@ -33,7 +33,7 @@ body {
 .grid-item-header {
   background-color: rgb(7, 153, 250);
   color: whitesmoke;
-  font-size: 209;
+  /* font-size: 15px; */
   font-weight: 700;
   width: 100%;
   height: 100%;
@@ -44,6 +44,16 @@ body {
 
 .grid-item {
   background-color: rgba(140, 155, 170, 5%);
+  color: rgb(211, 211, 211);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+}
+
+.grid-item-weekend {
+  background-color: rgba(140, 155, 170, 15%);
   color: rgb(211, 211, 211);
   width: 100%;
   height: 100%;
@@ -80,4 +90,13 @@ body {
 
 .content {
   padding-top: 55px;
+}
+
+.dayweek {
+  color: rgb(7, 153, 250);
+  font-size: 15px;
+}
+
+.folga {
+  color: rgb(7, 153, 250);
 }
