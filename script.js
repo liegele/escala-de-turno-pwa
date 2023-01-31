@@ -77,6 +77,16 @@ const exibirEscala = function () {
 
 document.addEventListener('DOMContentLoaded', exibirEscala);
 
+//Verificando o fim da página par exibir mais datas.
+window.addEventListener('scroll', () => {
+  if (
+    window.scrollY + window.innerHeight >=
+    window.document.documentElement.scrollHeight
+  ) {
+    console.log('fim da página');
+  }
+});
+
 //Rolando para ao dia atual.
 /* console.log(document.querySelector('#hoje'));
 document.querySelector('#hoje').scrollIntoView({ behavior: 'smooth' }); */
