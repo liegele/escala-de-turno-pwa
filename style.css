@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
@@ -99,4 +103,11 @@ body {
 
 .folga {
   color: rgb(7, 153, 250);
+  font-weight: bold;
+}
+
+.hoje {
+  border-style: dotted;
+  border-width: 1px;
+  border-color: whitesmoke;
 }

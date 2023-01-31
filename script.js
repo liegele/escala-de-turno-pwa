@@ -26,7 +26,9 @@ const exibirEscala = function () {
     },
   };
 
-  let dt = new Date(dataInicial);
+  const dt = new Date(dataInicial);
+  const hoje = new Date();
+  console.log(hoje.toLocaleDateString('pt-BR'));
 
   while (dt <= dataFinal) {
     let evento = new Date(dt);
@@ -36,9 +38,13 @@ const exibirEscala = function () {
         : 'grid-item';
     let html = `
     <div class="grid-container">
-      <div class="${fimDeSemana}">${evento.toLocaleDateString(
-      'pt-BR'
-    )}<div class='dayweek'>${diaSemana[evento.getDay()]}</div></div>
+      <div class="${fimDeSemana}" id="${
+      hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+        ? 'hoje'
+        : ''
+    }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
+      diaSemana[evento.getDay()]
+    }</div></div>
       <div class="${fimDeSemana} ${
       escala[grupo.a.inicio] === 'F' ? 'folga' : ''
     }">${escala[grupo.a.inicio]}</div>
@@ -57,11 +63,7 @@ const exibirEscala = function () {
     </div>
     `;
 
-    /* grupo.a.inicio < 9 ? (grupo.a.inicio += 1) : (grupo.a.inicio = 0);
-    grupo.b.inicio < 9 ? (grupo.b.inicio += 1) : (grupo.b.inicio = 0);
-    grupo.c.inicio < 9 ? (grupo.c.inicio += 1) : (grupo.c.inicio = 0);
-    grupo.d.inicio < 9 ? (grupo.d.inicio += 1) : (grupo.d.inicio = 0);
-    grupo.e.inicio < 9 ? (grupo.e.inicio += 1) : (grupo.e.inicio = 0); */
+    //Reinicializando contador dos grupos.
     grupo.reiniciar(grupo.a);
     grupo.reiniciar(grupo.b);
     grupo.reiniciar(grupo.c);
@@ -74,6 +76,10 @@ const exibirEscala = function () {
 };
 
 document.addEventListener('DOMContentLoaded', exibirEscala);
+
+//Rolando para ao dia atual.
+/* console.log(document.querySelector('#hoje'));
+document.querySelector('#hoje').scrollIntoView({ behavior: 'smooth' }); */
 
 //Registrando o serviveWorker.js
 
