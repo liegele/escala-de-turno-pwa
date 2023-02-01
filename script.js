@@ -1,7 +1,7 @@
 const container = document.querySelector('main');
 
 let statusQtdeDias = 0;
-let dataStop = new Date();
+let dataStop;
 
 const grupo = {
   a: {
@@ -26,33 +26,26 @@ const grupo = {
 
 const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const dataInicial = new Date(dataStatus);
-  const dataFinal = new Date('12/31/2025');
+  console.log(
+    'dataStatus: ',
+    dataStatus,
+    'dataInicial: ',
+    dataInicial.toLocaleDateString('pt-BR')
+  );
+  // const dataFinal = new Date('12/31/2025');
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
   const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
-  /* const grupo = {
-    a: {
-      inicio: 0,
-    },
-    b: {
-      inicio: 4,
-    },
-    c: {
-      inicio: 2,
-    },
-    d: {
-      inicio: 8,
-    },
-    e: {
-      inicio: 6,
-    },
-    reiniciar(x) {
-      x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
-    },
-  }; */
 
   const dt = new Date(dataInicial);
   const hoje = new Date();
-  console.log(hoje.toLocaleDateString('pt-BR'));
+  console.log(
+    'hoje:',
+    hoje.toLocaleDateString('pt-BR'),
+    'dataStop: ',
+    dataStop,
+    'Grupo:',
+    grupo
+  );
 
   // while (dt <= dataFinal) {
   while (statusQtdeDias <= qtdeDias) {
@@ -97,10 +90,12 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
 
     container.insertAdjacentHTML('beforeend', html);
     dt.setDate(dt.getDate() + 1);
-    dataStop.setDate(dt.getDate() + 1);
     statusQtdeDias += 1;
   }
-  console.log(dataStop);
+
+  // dataStop = dt.toLocaleDateString();
+  dataStop = dt;
+  console.log('dataStop: ', dataStop, 'grupo', grupo);
   statusQtdeDias = 0;
 };
 
@@ -113,7 +108,7 @@ window.addEventListener('scroll', () => {
     window.document.documentElement.scrollHeight
   ) {
     exibirEscala(89, dataStop);
-    console.log('fim da página');
+    console.log('fim da página: ', 'dataStop', dataStop);
   }
 });
 
