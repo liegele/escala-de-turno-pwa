@@ -106,8 +106,7 @@ body {
   font-weight: bold;
 }
 
-.hoje {
-  border-style: dotted;
-  border-width: 1px;
-  border-color: whitesmoke;
+#hoje {
+  /* font-weight: 700; */
+  background-color: rgba(7, 153, 250, 25%);
 }

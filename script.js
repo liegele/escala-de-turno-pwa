@@ -1,3 +1,4 @@
+//Definindo os elementos do DOM que serão manipulados.
 const container = document.querySelector('main');
 const labelGrupos = document.getElementById('labelGrupos');
 const labelGrupoA = document.getElementById('labelGrupoA');
@@ -5,8 +6,6 @@ const labelGrupoB = document.getElementById('labelGrupoB');
 const labelGrupoC = document.getElementById('labelGrupoC');
 const labelGrupoD = document.getElementById('labelGrupoD');
 const labelGrupoE = document.getElementById('labelGrupoE');
-
-console.log(labelGrupos);
 
 let statusQtdeDias = 0;
 let dataStop;
@@ -32,36 +31,22 @@ const grupo = {
   },
 };
 
+//Função que realiza procedimentos para criação e exibição da escala.
 const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const dataInicial = new Date(dataStatus);
-  console.log(
-    'dataStatus: ',
-    dataStatus,
-    'dataInicial: ',
-    dataInicial.toLocaleDateString('pt-BR')
-  );
-  // const dataFinal = new Date('12/31/2025');
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
   const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
 
   const dt = new Date(dataInicial);
   const hoje = new Date();
-  console.log(
-    'hoje:',
-    hoje.toLocaleDateString('pt-BR'),
-    'dataStop: ',
-    dataStop,
-    'Grupo:',
-    grupo
-  );
 
-  // while (dt <= dataFinal) {
   while (statusQtdeDias <= qtdeDias) {
     let evento = new Date(dt);
     const fimDeSemana =
       evento.getDay() === 0 || evento.getDay() === 6
         ? 'grid-item-weekend'
         : 'grid-item';
+
     let html = `
     <div class="grid-container">
       <div class="${fimDeSemana}" id="${
@@ -102,9 +87,8 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
     statusQtdeDias += 1;
   }
 
-  // dataStop = dt.toLocaleDateString();
+  //Definindo a data que completa um ciclo de atualização da função exibirEscala().
   dataStop = dt;
-  console.log('dataStop: ', dataStop, 'grupo', grupo);
   statusQtdeDias = 0;
 };
 
@@ -139,10 +123,10 @@ labelGrupos.addEventListener('mouseup', () => {
   labelGrupoE.innerText = 'E';
 });
 
-//Executa a função exibirEscala após término do documento.
+//Executa a função exibirEscala após o término do carregamento do documento.
 document.addEventListener('DOMContentLoaded', exibirEscala(89, '01/01/2023'));
 
-//Verificando o fim da página par exibir mais datas.
+//Verificando se estamos no fim do documento para poder exibir mais datas.
 window.addEventListener('scroll', () => {
   if (
     window.scrollY + window.innerHeight >=
@@ -153,9 +137,13 @@ window.addEventListener('scroll', () => {
   }
 });
 
-//Rolando para ao dia atual.
-/* console.log(document.querySelector('#hoje'));
-document.querySelector('#hoje').scrollIntoView({ behavior: 'smooth' }); */
+//Scrolling para o dia atual.
+console.log(document.querySelector('#hoje'));
+window.scroll({
+  top: document.querySelector('#hoje').offsetTop - window.innerHeight / 2 + 60,
+  left: 0,
+  behavior: 'smooth',
+});
 
 //Registrando o serviveWorker.js
 
