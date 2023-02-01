@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', exibirEscala(89, '01/01/2023'));
 window.addEventListener('scroll', () => {
   if (
     window.scrollY + window.innerHeight >=
-    window.document.documentElement.scrollHeight
+    window.document.documentElement.scrollHeight - 100
   ) {
     exibirEscala(89, dataStop);
     console.log('fim da página: ', 'dataStop', dataStop);
