@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', exibirEscala(89, '01/01/2023'));
 window.addEventListener('scroll', () => {
   if (
     window.scrollY + window.innerHeight >=
-    window.document.documentElement.scrollHeight
+    window.document.documentElement.scrollHeight - 100
   ) {
     exibirEscala(89, dataStop);
     console.log('fim da página: ', 'dataStop', dataStop);
@@ -159,11 +159,11 @@ document.querySelector('#hoje').scrollIntoView({ behavior: 'smooth' }); */
 
 //Registrando o serviveWorker.js
 
-/* if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker
       .register('/serviceWorker.js')
       .then((res) => console.log('service worker registered'))
       .catch((err) => console.log('service worker not registered', err));
   });
-} */
+}
