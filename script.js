@@ -138,12 +138,18 @@ window.addEventListener('scroll', () => {
 });
 
 //Scrolling para o dia atual.
-console.log(document.querySelector('#hoje'));
-window.scroll({
-  top: document.querySelector('#hoje').offsetTop - window.innerHeight / 2 + 60,
-  left: 0,
-  behavior: 'smooth',
-});
+const scrollingDiaAtual = function () {
+  console.log(document.querySelector('#hoje'));
+  window.scroll({
+    top:
+      document.querySelector('#hoje').offsetTop - window.innerHeight / 2 + 60,
+    left: 0,
+    behavior: 'smooth',
+  });
+};
+
+//Scrooling para o dia atual após carregamento do documento.
+window.addEventListener('load', scrollingDiaAtual);
 
 //Registrando o serviveWorker.js
 
