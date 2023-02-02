@@ -9,6 +9,7 @@ const labelGrupoE = document.getElementById('labelGrupoE');
 
 let statusQtdeDias = 0;
 let dataStop;
+let quantidadeDeDias = 89;
 
 const grupo = {
   a: {
@@ -124,7 +125,10 @@ labelGrupos.addEventListener('mouseup', () => {
 });
 
 //Executa a função exibirEscala após o término do carregamento do documento.
-document.addEventListener('DOMContentLoaded', exibirEscala(89, '01/01/2023'));
+document.addEventListener(
+  'DOMContentLoaded',
+  exibirEscala(quantidadeDeDias, '01/01/2023')
+);
 
 //Verificando se estamos no fim do documento para poder exibir mais datas.
 window.addEventListener('scroll', () => {
@@ -132,14 +136,12 @@ window.addEventListener('scroll', () => {
     window.scrollY + window.innerHeight >=
     window.document.documentElement.scrollHeight - 100
   ) {
-    exibirEscala(89, dataStop);
-    console.log('fim da página: ', 'dataStop', dataStop);
+    exibirEscala(quantidadeDeDias, dataStop);
   }
 });
 
 //Scrolling para o dia atual.
 const scrollingDiaAtual = function () {
-  console.log(document.querySelector('#hoje'));
   window.scroll({
     top:
       document.querySelector('#hoje').offsetTop - window.innerHeight / 2 + 60,
@@ -153,11 +155,11 @@ window.addEventListener('load', scrollingDiaAtual);
 
 //Registrando o serviveWorker.js
 
-if ('serviceWorker' in navigator) {
+/* if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker
       .register('/serviceWorker.js')
       .then((res) => console.log('service worker registered'))
       .catch((err) => console.log('service worker not registered', err));
   });
-}
+} */
