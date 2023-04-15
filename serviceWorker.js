@@ -1,4 +1,4 @@
-const staticDevEscala = 'dev-escala-site-v1';
+const staticDevEscala = 'dev-escala-site-v2';
 const assets = ['/', '/index.html', '/style.css', '/script.js'];
 
 self.addEventListener('install', (installEvent) => {
