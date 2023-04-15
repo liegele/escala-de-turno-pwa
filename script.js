@@ -9,7 +9,7 @@ const labelGrupoE = document.getElementById('labelGrupoE');
 
 let statusQtdeDias = 0;
 let dataStop;
-let quantidadeDeDias = 89;
+let quantidadeDeDias = 364; //89
 
 const grupo = {
   a: {
