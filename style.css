@@ -90,10 +90,11 @@ body {
 
 .sticky {
   position: fixed;
+  padding: 0px 13px 0px 13px;
 }
 
 .content {
-  padding-top: 55px;
+  padding-top: 50px;
 }
 
 .dayweek {
