@@ -1,10 +1,10 @@
-const staticDevEscala = 'dev-escala-site-v5.0.5';
+const staticDevEscala = 'dev-escala-site-v5.0.6';
 const assets = ['/', '/index.html', '/style.css', '/script.js'];
 
 self.addEventListener('install', (installEvent) => {
   installEvent.waitUntil(
     caches.open(staticDevEscala).then((cache) => {
-      cache.delete();
+      cache.delete(staticDevEscala);
       cache.addAll(assets);
       //Força a atualização do serviceWorker.js para a versão mais nova.
       self.skipWaiting();
