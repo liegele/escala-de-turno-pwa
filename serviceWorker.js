@@ -1,4 +1,4 @@
-const staticDevEscala = 'dev-escala-site-v5';
+const staticDevEscala = 'dev-escala-site-v5.0.1';
 const assets = ['/', '/index.html', '/style.css', '/script.js'];
 
 self.addEventListener('install', (installEvent) => {
@@ -17,6 +17,8 @@ self.addEventListener('fetch', (fetchEvent) => {
       return res || fetch(fetchEvent.request);
     })
   );
+  //Força a atualização do serviceWorker.js para a versão mais nova.
+  self.skipWaiting();
 });
 
 /* self.addEventListener('activate', async () => {
