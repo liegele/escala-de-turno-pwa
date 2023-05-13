@@ -32,55 +32,120 @@ const grupo = {
   },
 };
 
+const grupo12 = {
+  a: {
+    inicio: 8,
+  },
+  b: {
+    inicio: 2,
+  },
+  c: {
+    inicio: 0,
+  },
+  d: {
+    inicio: 6,
+  },
+  e: {
+    inicio: 4,
+  },
+  reiniciar(x) {
+    x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
+  },
+};
+
 //Função que realiza procedimentos para criação e exibição da escala.
 const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const dataInicial = new Date(dataStatus);
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
+  const escala12 = ['7', '7', '19', '19', 'F', 'F', 'F', 'F', 'F', 'F'];
   const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
 
   const dt = new Date(dataInicial);
   const hoje = new Date();
+  const dataTransicao = new Date('05/19/2023');
+
+  let html = '';
 
   while (statusQtdeDias <= qtdeDias) {
     let evento = new Date(dt);
+    // console.log(dataTransicao);
     const fimDeSemana =
       evento.getDay() === 0 || evento.getDay() === 6
         ? 'grid-item-weekend'
         : 'grid-item';
 
-    let html = `
-    <div class="grid-container">
-      <div class="${fimDeSemana}" id="${
-      hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
-        ? 'hoje'
-        : ''
-    }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
-      diaSemana[evento.getDay()]
-    }</div></div>
-      <div class="${fimDeSemana} ${
-      escala[grupo.a.inicio] === 'F' ? 'folga' : ''
-    }">${escala[grupo.a.inicio]}</div>
-      <div class="${fimDeSemana} ${
-      escala[grupo.b.inicio] === 'F' ? 'folga' : ''
-    }">${escala[grupo.b.inicio]}</div>
-      <div class="${fimDeSemana} ${
-      escala[grupo.c.inicio] === 'F' ? 'folga' : ''
-    }">${escala[grupo.c.inicio]}</div>
-      <div class="${fimDeSemana} ${
-      escala[grupo.d.inicio] === 'F' ? 'folga' : ''
-    }">${escala[grupo.d.inicio]}</div>
-      <div class="${fimDeSemana} ${
-      escala[grupo.e.inicio] === 'F' ? 'folga' : ''
-    }">${escala[grupo.e.inicio]}</div>
-    </div>
-    `;
+    if (dataTransicao <= evento) {
+      html = `
+      <div>${
+        evento.toLocaleDateString('pt-BR') === '19/05/2023' ? '<hr>' : ''
+      }</div>
+      <div class="grid-container">
+        <div class="${fimDeSemana}" id="${
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? 'hoje'
+          : ''
+      }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
+        diaSemana[evento.getDay()]
+      }</div></div>
+        <div class="${fimDeSemana} ${
+        escala12[grupo12.a.inicio] === 'F' ? 'folga' : ''
+      }">${escala12[grupo12.a.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala12[grupo12.b.inicio] === 'F' ? 'folga' : ''
+      }">${escala12[grupo12.b.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala12[grupo12.c.inicio] === 'F' ? 'folga' : ''
+      }">${escala12[grupo12.c.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala12[grupo12.d.inicio] === 'F' ? 'folga' : ''
+      }">${escala12[grupo12.d.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala12[grupo12.e.inicio] === 'F' ? 'folga' : ''
+      }">${escala12[grupo12.e.inicio]}</div>
+      </div>
+      `;
 
-    //Reinicializando contador dos grupos.
-    grupo.reiniciar(grupo.a);
-    grupo.reiniciar(grupo.b);
-    grupo.reiniciar(grupo.c);
-    grupo.reiniciar(grupo.d);
-    grupo.reiniciar(grupo.e);
+      //Reinicializando contador dos grupos.
+      grupo12.reiniciar(grupo12.a);
+      grupo12.reiniciar(grupo12.b);
+      grupo12.reiniciar(grupo12.c);
+      grupo12.reiniciar(grupo12.d);
+      grupo12.reiniciar(grupo12.e);
+    } else {
+      html = `
+      <div class="grid-container">
+        <div class="${fimDeSemana}" id="${
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? 'hoje'
+          : ''
+      }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
+        diaSemana[evento.getDay()]
+      }</div></div>
+        <div class="${fimDeSemana} ${
+        escala[grupo.a.inicio] === 'F' ? 'folga' : ''
+      }">${escala[grupo.a.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala[grupo.b.inicio] === 'F' ? 'folga' : ''
+      }">${escala[grupo.b.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala[grupo.c.inicio] === 'F' ? 'folga' : ''
+      }">${escala[grupo.c.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala[grupo.d.inicio] === 'F' ? 'folga' : ''
+      }">${escala[grupo.d.inicio]}</div>
+        <div class="${fimDeSemana} ${
+        escala[grupo.e.inicio] === 'F' ? 'folga' : ''
+      }">${escala[grupo.e.inicio]}</div>
+      </div>
+      `;
+
+      //Reinicializando contador dos grupos.
+      grupo.reiniciar(grupo.a);
+      grupo.reiniciar(grupo.b);
+      grupo.reiniciar(grupo.c);
+      grupo.reiniciar(grupo.d);
+      grupo.reiniciar(grupo.e);
+    }
 
     //Adiciona as datas da escala antes do fim do elemento main.
     container.insertAdjacentHTML('beforeend', html);
@@ -150,7 +215,7 @@ const scrollingDiaAtual = function () {
   });
 };
 
-//Scrooling para o dia atual após carregamento do documento.
+//Scrolling para o dia atual após carregamento do documento.
 window.addEventListener('load', scrollingDiaAtual);
 
 //Registrando o serviveWorker.js
