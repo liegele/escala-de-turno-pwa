@@ -229,11 +229,11 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-//Atualiza a página quando há nova versão do serviceWorker.js
+/* //Atualiza a página quando há nova versão do serviceWorker.js
 let refreshing = false;
 navigator.serviceWorker.addEventListener('controllerchange', () => {
   if (!refreshing) {
     window.location.reload();
     refreshing = true;
   }
-});
+}); */
