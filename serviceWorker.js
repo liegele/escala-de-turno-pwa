@@ -9,6 +9,7 @@ self.addEventListener('install', (installEvent) => {
   );
   //Força a atualização do serviceWorker.js para a versão mais nova.
   self.skipWaiting();
+  console.log('serviceWorker installled!');
 });
 
 self.addEventListener('fetch', (fetchEvent) => {
@@ -18,7 +19,7 @@ self.addEventListener('fetch', (fetchEvent) => {
     })
   );
   //Força a atualização do serviceWorker.js para a versão mais nova.
-  self.skipWaiting();
+  // self.skipWaiting();
 });
 
 /* self.addEventListener('activate', async () => {
