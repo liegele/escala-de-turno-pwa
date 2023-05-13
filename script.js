@@ -53,6 +53,15 @@ const grupo12 = {
   },
 };
 
+//Atualiza a página quando há nova versão do serviceWorker.js
+let refreshing = false;
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+  if (!refreshing) {
+    window.location.reload();
+    refreshing = true;
+  }
+});
+
 //Função que realiza procedimentos para criação e exibição da escala.
 const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const dataInicial = new Date(dataStatus);

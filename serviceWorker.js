@@ -1,4 +1,4 @@
-const staticDevEscala = 'dev-escala-site-v3';
+const staticDevEscala = 'dev-escala-site-v4';
 const assets = ['/', '/index.html', '/style.css', '/script.js'];
 
 self.addEventListener('install', (installEvent) => {
@@ -18,3 +18,10 @@ self.addEventListener('fetch', (fetchEvent) => {
     })
   );
 });
+
+/* self.addEventListener('activate', async () => {
+  const tabs = await self.clients.matchAll({ type: 'window' });
+  tabs.forEach((tab) => {
+    tab.navigate(tab.url);
+  });
+}); */
