@@ -1,6 +1,6 @@
 {
-  "name": "Escala de Turno 6x4",
-  "short_name": "Escala 6x4",
+  "name": "Escala de Turno 4x6 12 horas",
+  "short_name": "Escala 12",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#282828",
