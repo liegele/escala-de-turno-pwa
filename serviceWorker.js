@@ -1,4 +1,4 @@
-const staticDevEscala = 'dev-escala-site-v5.0.8';
+const staticDevEscala = 'dev-escala-site-v0.0.1';
 const assets = ['/', '/index.html', '/style.css', '/script.js'];
 
 self.addEventListener('install', (installEvent) => {
@@ -14,7 +14,7 @@ self.addEventListener('install', (installEvent) => {
 });
 
 self.addEventListener('activate', (event) => {
-  // Remove old caches
+  // Remove caches antigos
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
