@@ -1,8 +1,8 @@
-const staticDevEscala = 'dev-escala-site-v5.0.7';
+const staticDevEscala = 'dev-escala-site-v5.0.8';
 const assets = ['/', '/index.html', '/style.css', '/script.js'];
 
 self.addEventListener('install', (installEvent) => {
-  self.caches.delete(staticDevEscala);
+  // self.caches.delete(staticDevEscala);
   installEvent.waitUntil(
     caches.open(staticDevEscala).then((cache) => {
       cache.addAll(assets);
@@ -10,6 +10,21 @@ self.addEventListener('install', (installEvent) => {
       self.skipWaiting();
       console.log('serviceWorker installed!');
     })
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  // Remove old caches
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      return keys.map(async (cache) => {
+        if (cache !== staticDevEscala) {
+          console.log('Service Worker: Removing old cache: ' + cache);
+          return await caches.delete(cache);
+        }
+      });
+    })()
   );
 });
 
