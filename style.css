@@ -13,7 +13,7 @@ body {
   font-size: 16px;
   min-height: 100vh;
   background-color: rgb(40, 40, 40);
-  padding-top: 0px;
+  padding-top: 5px;
   user-select: none;
 }
 
@@ -27,6 +27,7 @@ body {
 
 .navbar a {
   float: left;
+
   display: block;
   color: whitesmoke;
   font-size: 22px;
@@ -90,10 +91,11 @@ body {
 
 .sticky {
   position: fixed;
+  padding: 0px 13px 0px 13px;
 }
 
 .content {
-  padding-top: 55px;
+  padding-top: 50px;
 }
 
 .dayweek {
@@ -108,5 +110,16 @@ body {
 
 #hoje {
   /* font-weight: 700; */
-  background-color: rgba(7, 153, 250, 25%);
+  background-color: rgba(7, 153, 250, 35%);
+}
+
+hr {
+  width: 90%;
+  height: 2px;
+  background-color: rgb(7, 153, 250);
+  border: 0;
+  margin-bottom: 7px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 9px;
 }
