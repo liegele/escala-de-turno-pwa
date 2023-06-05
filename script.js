@@ -218,6 +218,14 @@ const scrollingDiaAtual = function () {
 //Scrolling para o dia atual após carregamento do documento.
 window.addEventListener('load', scrollingDiaAtual);
 
+//Scrolling para o dia atual após documento voltar a ficar visível.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    scrollingDiaAtual();
+    console.log('ok.. it worked!');
+  }
+});
+
 //Registrando o serviveWorker.js
 
 if ('serviceWorker' in navigator) {
