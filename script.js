@@ -222,7 +222,7 @@ window.addEventListener('load', scrollingDiaAtual);
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
     scrollingDiaAtual();
-    console.log('ok.. it worked!');
+    // console.log('ok.. it worked!');
   }
 });
 
