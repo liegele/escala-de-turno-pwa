@@ -54,6 +54,9 @@ const grupo12 = {
 };
 
 //Função que realiza procedimentos para criação e exibição da escala.
+
+// const hoje = new Date();
+
 const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const dataInicial = new Date(dataStatus);
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
@@ -220,7 +223,9 @@ window.addEventListener('load', scrollingDiaAtual);
 
 //Scrolling para o dia atual após documento voltar a ficar visível.
 document.addEventListener('visibilitychange', () => {
+  // console.log(hoje === new Date());
   if (document.visibilityState === 'visible') {
+    exibirEscala(quantidadeDeDias, '01/01/2023');
     scrollingDiaAtual();
     // console.log('ok.. it worked!');
   }
