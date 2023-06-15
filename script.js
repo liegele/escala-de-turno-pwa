@@ -55,7 +55,7 @@ const grupo12 = {
 
 //Função que realiza procedimentos para criação e exibição da escala.
 
-// const hoje = new Date();
+const hoje = new Date();
 
 const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const dataInicial = new Date(dataStatus);
@@ -64,7 +64,8 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
 
   const dt = new Date(dataInicial);
-  const hoje = new Date();
+  // const hoje = new Date();
+  console.log('hoje: ', hoje);
   const dataTransicao = new Date('05/19/2023');
 
   let html = '';
@@ -225,9 +226,15 @@ window.addEventListener('load', scrollingDiaAtual);
 document.addEventListener('visibilitychange', () => {
   // console.log(hoje === new Date());
   if (document.visibilityState === 'visible') {
-    exibirEscala(quantidadeDeDias, '01/01/2023');
-    scrollingDiaAtual();
-    // console.log('ok.. it worked!');
+    const diaAtualCheck = new Date();
+    if (
+      hoje.toLocaleDateString('pt-BR') !==
+      diaAtualCheck.toLocaleDateString('pt-BR')
+    ) {
+      location.reload(true);
+    } else {
+      scrollingDiaAtual();
+    }
   }
 });
 
