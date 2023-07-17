@@ -10,22 +10,28 @@ const labelGrupoE = document.getElementById('labelGrupoE');
 let statusQtdeDias = 0;
 let dataStop;
 let quantidadeDeDias = 364; //89
+let grupoStorageSelecionado;
 
 const grupo = {
   a: {
     inicio: 0,
+    grupo: 'A',
   },
   b: {
     inicio: 4,
+    grupo: 'B',
   },
   c: {
     inicio: 2,
+    grupo: 'C',
   },
   d: {
     inicio: 8,
+    grupo: 'D',
   },
   e: {
     inicio: 6,
+    grupo: 'E',
   },
   reiniciar(x) {
     x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
@@ -35,18 +41,23 @@ const grupo = {
 const grupo12 = {
   a: {
     inicio: 8,
+    grupo: 'A',
   },
   b: {
     inicio: 2,
+    grupo: 'B',
   },
   c: {
     inicio: 0,
+    grupo: 'C',
   },
   d: {
     inicio: 6,
+    grupo: 'D',
   },
   e: {
     inicio: 4,
+    grupo: 'E',
   },
   reiniciar(x) {
     x.inicio < 9 ? (x.inicio += 1) : (x.inicio = 0);
@@ -57,7 +68,11 @@ const grupo12 = {
 
 const hoje = new Date();
 
-const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
+const exibirEscala = function (
+  qtdeDias,
+  dataStatus = '01/01/2023',
+  grupoSelecionado = localStorage.getItem('grupoStorageSelecionado')
+) {
   const dataInicial = new Date(dataStatus);
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
   const escala12 = ['7', '7', '19', '19', 'F', 'F', 'F', 'F', 'F', 'F'];
@@ -65,7 +80,7 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
 
   const dt = new Date(dataInicial);
   // const hoje = new Date();
-  console.log('hoje: ', hoje);
+  // console.log('hoje: ', hoje);
   const dataTransicao = new Date('05/19/2023');
 
   let html = '';
@@ -73,6 +88,7 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
   while (statusQtdeDias <= qtdeDias) {
     let evento = new Date(dt);
     // console.log(dataTransicao);
+
     const fimDeSemana =
       evento.getDay() === 0 || evento.getDay() === 6
         ? 'grid-item-weekend'
@@ -91,21 +107,41 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
       }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
         diaSemana[evento.getDay()]
       }</div></div>
-        <div class="${fimDeSemana} ${
-        escala12[grupo12.a.inicio] === 'F' ? 'folga' : ''
-      }">${escala12[grupo12.a.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala12[grupo12.b.inicio] === 'F' ? 'folga' : ''
-      }">${escala12[grupo12.b.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala12[grupo12.c.inicio] === 'F' ? 'folga' : ''
-      }">${escala12[grupo12.c.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala12[grupo12.d.inicio] === 'F' ? 'folga' : ''
-      }">${escala12[grupo12.d.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala12[grupo12.e.inicio] === 'F' ? 'folga' : ''
-      }">${escala12[grupo12.e.inicio]}</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.a.grupo
+      }" class="${fimDeSemana}${
+        grupo.a.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      } ${escala12[grupo12.a.inicio] === 'F' ? 'folga' : ''}">${
+        escala12[grupo12.a.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.b.grupo
+      }" class="${fimDeSemana}${
+        grupo.b.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala12[grupo12.b.inicio] === 'F' ? 'folga' : ''}">${
+        escala12[grupo12.b.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.c.grupo
+      }" class="${fimDeSemana}${
+        grupo.c.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala12[grupo12.c.inicio] === 'F' ? 'folga' : ''}">${
+        escala12[grupo12.c.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.d.grupo
+      }" class="${fimDeSemana}${
+        grupo.d.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala12[grupo12.d.inicio] === 'F' ? 'folga' : ''}">${
+        escala12[grupo12.d.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.e.grupo
+      }" class="${fimDeSemana}${
+        grupo.e.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala12[grupo12.e.inicio] === 'F' ? 'folga' : ''}">${
+        escala12[grupo12.e.inicio]
+      }</div>
       </div>
       `;
 
@@ -125,21 +161,41 @@ const exibirEscala = function (qtdeDias, dataStatus = '01/01/2023') {
       }">${evento.toLocaleDateString('pt-BR')}<div class='dayweek'>${
         diaSemana[evento.getDay()]
       }</div></div>
-        <div class="${fimDeSemana} ${
-        escala[grupo.a.inicio] === 'F' ? 'folga' : ''
-      }">${escala[grupo.a.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala[grupo.b.inicio] === 'F' ? 'folga' : ''
-      }">${escala[grupo.b.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala[grupo.c.inicio] === 'F' ? 'folga' : ''
-      }">${escala[grupo.c.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala[grupo.d.inicio] === 'F' ? 'folga' : ''
-      }">${escala[grupo.d.inicio]}</div>
-        <div class="${fimDeSemana} ${
-        escala[grupo.e.inicio] === 'F' ? 'folga' : ''
-      }">${escala[grupo.e.inicio]}</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.a.grupo
+      }" class="${fimDeSemana}${
+        grupo.a.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala[grupo.a.inicio] === 'F' ? 'folga' : ''}">${
+        escala[grupo.a.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.b.grupo
+      }" class="${fimDeSemana}${
+        grupo.b.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala[grupo.b.inicio] === 'F' ? 'folga' : ''}">${
+        escala[grupo.b.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.c.grupo
+      }" class="${fimDeSemana}${
+        grupo.c.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala[grupo.c.inicio] === 'F' ? 'folga' : ''}">${
+        escala[grupo.c.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.d.grupo
+      }" class="${fimDeSemana}${
+        grupo.d.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala[grupo.d.inicio] === 'F' ? 'folga' : ''}">${
+        escala[grupo.d.inicio]
+      }</div>
+        <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
+        grupo.e.grupo
+      }" class="${fimDeSemana}${
+        grupo.e.grupo === grupoSelecionado ? ' grid-grupo' : ''
+      }  ${escala[grupo.e.inicio] === 'F' ? 'folga' : ''}">${
+        escala[grupo.e.inicio]
+      }</div>
       </div>
       `;
 
@@ -191,6 +247,67 @@ labelGrupos.addEventListener('mouseup', () => {
   labelGrupoC.innerText = 'C';
   labelGrupoD.innerText = 'D';
   labelGrupoE.innerText = 'E';
+});
+
+//Seleciona a coluna destacando o grupo selecionado
+labelGrupoA.addEventListener('click', () => {
+  if (localStorage.getItem('grupoStorageSelecionado') === 'A') {
+    localStorage.setItem('grupoStorageSelecionado', null);
+    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+  } else {
+    localStorage.setItem('grupoStorageSelecionado', 'A');
+    exibirEscala(quantidadeDeDias, '01/01/2023', 'A');
+  }
+  location.reload(true);
+  // scrollingDiaAtual();
+});
+
+labelGrupoB.addEventListener('click', () => {
+  if (localStorage.getItem('grupoStorageSelecionado') === 'B') {
+    localStorage.setItem('grupoStorageSelecionado', null);
+    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+  } else {
+    localStorage.setItem('grupoStorageSelecionado', 'B');
+    exibirEscala(quantidadeDeDias, '01/01/2023', 'B');
+  }
+  location.reload(true);
+  // scrollingDiaAtual();
+});
+
+labelGrupoC.addEventListener('click', () => {
+  if (localStorage.getItem('grupoStorageSelecionado') === 'C') {
+    localStorage.setItem('grupoStorageSelecionado', null);
+    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+  } else {
+    localStorage.setItem('grupoStorageSelecionado', 'C');
+    exibirEscala(quantidadeDeDias, '01/01/2023', 'C');
+  }
+  location.reload(true);
+  // scrollingDiaAtual();
+});
+
+labelGrupoD.addEventListener('click', () => {
+  if (localStorage.getItem('grupoStorageSelecionado') === 'D') {
+    localStorage.setItem('grupoStorageSelecionado', null);
+    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+  } else {
+    localStorage.setItem('grupoStorageSelecionado', 'D');
+    exibirEscala(quantidadeDeDias, '01/01/2023', 'D');
+  }
+  location.reload(true);
+  // scrollingDiaAtual();
+});
+
+labelGrupoE.addEventListener('click', () => {
+  if (localStorage.getItem('grupoStorageSelecionado') === 'E') {
+    localStorage.setItem('grupoStorageSelecionado', null);
+    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+  } else {
+    localStorage.setItem('grupoStorageSelecionado', 'E');
+    exibirEscala(quantidadeDeDias, '01/01/2023', 'E');
+  }
+  location.reload(true);
+  // scrollingDiaAtual();
 });
 
 //Executa a função exibirEscala após o término do carregamento do documento.
