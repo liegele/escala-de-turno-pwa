@@ -76,7 +76,15 @@ const exibirEscala = function (
   const dataInicial = new Date(dataStatus);
   const escala = ['7', '7', '15', '15', '23', '23', 'F', 'F', 'F', 'F'];
   const escala12 = ['7', '7', '19', '19', 'F', 'F', 'F', 'F', 'F', 'F'];
-  const diaSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+  const diaSemana = [
+    'domingo',
+    'segunda',
+    'terça',
+    'quarta',
+    'quinta',
+    'sexta',
+    'sábado',
+  ];
 
   const dt = new Date(dataInicial);
   // const hoje = new Date();
