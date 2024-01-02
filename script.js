@@ -70,7 +70,7 @@ const hoje = new Date();
 
 const exibirEscala = function (
   qtdeDias,
-  dataStatus = '01/01/2023',
+  dataStatus = '01/01/2024',
   grupoSelecionado = localStorage.getItem('grupoStorageSelecionado')
 ) {
   const dataInicial = new Date(dataStatus);
@@ -261,10 +261,10 @@ labelGrupos.addEventListener('mouseup', () => {
 labelGrupoA.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'A') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+    exibirEscala(quantidadeDeDias, '01/01/2024', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'A');
-    exibirEscala(quantidadeDeDias, '01/01/2023', 'A');
+    exibirEscala(quantidadeDeDias, '01/01/2024', 'A');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -273,10 +273,10 @@ labelGrupoA.addEventListener('click', () => {
 labelGrupoB.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'B') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+    exibirEscala(quantidadeDeDias, '01/01/2024', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'B');
-    exibirEscala(quantidadeDeDias, '01/01/2023', 'B');
+    exibirEscala(quantidadeDeDias, '01/01/2024', 'B');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -285,10 +285,10 @@ labelGrupoB.addEventListener('click', () => {
 labelGrupoC.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'C') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+    exibirEscala(quantidadeDeDias, '01/01/2024', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'C');
-    exibirEscala(quantidadeDeDias, '01/01/2023', 'C');
+    exibirEscala(quantidadeDeDias, '01/01/2024', 'C');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -297,10 +297,10 @@ labelGrupoC.addEventListener('click', () => {
 labelGrupoD.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'D') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+    exibirEscala(quantidadeDeDias, '01/01/2024', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'D');
-    exibirEscala(quantidadeDeDias, '01/01/2023', 'D');
+    exibirEscala(quantidadeDeDias, '01/01/2024', 'D');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -309,10 +309,10 @@ labelGrupoD.addEventListener('click', () => {
 labelGrupoE.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'E') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2023', null);
+    exibirEscala(quantidadeDeDias, '01/01/2024', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'E');
-    exibirEscala(quantidadeDeDias, '01/01/2023', 'E');
+    exibirEscala(quantidadeDeDias, '01/01/2024', 'E');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -321,7 +321,7 @@ labelGrupoE.addEventListener('click', () => {
 //Executa a função exibirEscala após o término do carregamento do documento.
 document.addEventListener(
   'DOMContentLoaded',
-  exibirEscala(quantidadeDeDias, '01/01/2023')
+  exibirEscala(quantidadeDeDias, '01/01/2024')
 );
 
 //Verificando se estamos no fim do documento para poder exibir mais datas.
