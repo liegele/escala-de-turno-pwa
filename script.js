@@ -296,35 +296,35 @@ const exibirEscala = function (
 };
 
 //Altera temporariamente a visualização do grupos entre letra/número. Nos eventos touchstart/end e mousedown/up.
-labelGrupos.addEventListener('touchstart', () => {
-  labelGrupoA.innerText = '5';
-  labelGrupoB.innerText = '4';
-  labelGrupoC.innerText = '1';
-  labelGrupoD.innerText = '3';
-  labelGrupoE.innerText = '2';
-});
-labelGrupos.addEventListener('touchend', () => {
-  labelGrupoA.innerText = 'A';
-  labelGrupoB.innerText = 'B';
-  labelGrupoC.innerText = 'C';
-  labelGrupoD.innerText = 'D';
-  labelGrupoE.innerText = 'E';
-});
+// labelGrupos.addEventListener('touchstart', () => {
+//   labelGrupoA.innerText = '5';
+//   labelGrupoB.innerText = '4';
+//   labelGrupoC.innerText = '1';
+//   labelGrupoD.innerText = '3';
+//   labelGrupoE.innerText = '2';
+// });
+// labelGrupos.addEventListener('touchend', () => {
+//   labelGrupoA.innerText = 'A';
+//   labelGrupoB.innerText = 'B';
+//   labelGrupoC.innerText = 'C';
+//   labelGrupoD.innerText = 'D';
+//   labelGrupoE.innerText = 'E';
+// });
 
-labelGrupos.addEventListener('mousedown', () => {
-  labelGrupoA.innerText = '5';
-  labelGrupoB.innerText = '4';
-  labelGrupoC.innerText = '1';
-  labelGrupoD.innerText = '3';
-  labelGrupoE.innerText = '2';
-});
-labelGrupos.addEventListener('mouseup', () => {
-  labelGrupoA.innerText = 'A';
-  labelGrupoB.innerText = 'B';
-  labelGrupoC.innerText = 'C';
-  labelGrupoD.innerText = 'D';
-  labelGrupoE.innerText = 'E';
-});
+// labelGrupos.addEventListener('mousedown', () => {
+//   labelGrupoA.innerText = '5';
+//   labelGrupoB.innerText = '4';
+//   labelGrupoC.innerText = '1';
+//   labelGrupoD.innerText = '3';
+//   labelGrupoE.innerText = '2';
+// });
+// labelGrupos.addEventListener('mouseup', () => {
+//   labelGrupoA.innerText = 'A';
+//   labelGrupoB.innerText = 'B';
+//   labelGrupoC.innerText = 'C';
+//   labelGrupoD.innerText = 'D';
+//   labelGrupoE.innerText = 'E';
+// });
 
 //Seleciona a coluna destacando o grupo selecionado
 labelGrupoA.addEventListener('click', () => {
