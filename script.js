@@ -172,35 +172,50 @@ const exibirEscala = function (
         <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
         grupo.a.grupo
       }" class="${fimDeSemana}${
-        grupo.a.grupo === grupoSelecionado ? ' grid-grupo' : ''
+        grupo.a.grupo === grupoSelecionado ||
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? ' grid-grupo'
+          : ''
       } ${escala12[grupo12.a.inicio] === 'F' ? 'folga' : ''}">${
         escala12[grupo12.a.inicio]
       }</div>
         <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
         grupo.b.grupo
       }" class="${fimDeSemana}${
-        grupo.b.grupo === grupoSelecionado ? ' grid-grupo' : ''
+        grupo.b.grupo === grupoSelecionado ||
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? ' grid-grupo'
+          : ''
       }  ${escala12[grupo12.b.inicio] === 'F' ? 'folga' : ''}">${
         escala12[grupo12.b.inicio]
       }</div>
         <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
         grupo.c.grupo
       }" class="${fimDeSemana}${
-        grupo.c.grupo === grupoSelecionado ? ' grid-grupo' : ''
+        grupo.c.grupo === grupoSelecionado ||
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? ' grid-grupo'
+          : ''
       }  ${escala12[grupo12.c.inicio] === 'F' ? 'folga' : ''}">${
         escala12[grupo12.c.inicio]
       }</div>
         <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
         grupo.d.grupo
       }" class="${fimDeSemana}${
-        grupo.d.grupo === grupoSelecionado ? ' grid-grupo' : ''
+        grupo.d.grupo === grupoSelecionado ||
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? ' grid-grupo'
+          : ''
       }  ${escala12[grupo12.d.inicio] === 'F' ? 'folga' : ''}">${
         escala12[grupo12.d.inicio]
       }</div>
         <div data-dia="${evento.toLocaleDateString('pt-BR')}" data-grupo="${
         grupo.e.grupo
       }" class="${fimDeSemana}${
-        grupo.e.grupo === grupoSelecionado ? ' grid-grupo' : ''
+        grupo.e.grupo === grupoSelecionado ||
+        hoje.toLocaleDateString('pt-BR') === evento.toLocaleDateString('pt-BR')
+          ? ' grid-grupo'
+          : ''
       }  ${escala12[grupo12.e.inicio] === 'F' ? 'folga' : ''}">${
         escala12[grupo12.e.inicio]
       }</div>
