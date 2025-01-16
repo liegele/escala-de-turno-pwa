@@ -436,3 +436,15 @@ navigator.serviceWorker.addEventListener('controllerchange', () => {
     refreshing = true;
   }
 }); */
+
+/*
+
+Atualização anual:
+
+1 - Realizar a substituição das datas para o primeiro dia do ano novo, 01/01/20XX;
+2 - Executar o 'live-server' para conferir com o app na versão antiga;
+3 - Atualizar o serviceWorker.js (staticDevEscala = 'dev-escala-site-v0.0.XX');
+4 - Salvar os arquivos e enviar para o Github;
+5 - Pronto! A atualização será realizada automaticamente no Netifly.
+
+*/
