@@ -38,26 +38,26 @@ const grupo = {
   },
 };
 
-//Ano 2025 a partir do dia 01/01/2025
+//Ano 2026 a partir do dia 01/01/2026
 const grupo12 = {
   a: {
-    inicio: 1,
+    inicio: 6,
     grupo: 'A',
   },
   b: {
-    inicio: 5,
+    inicio: 0,
     grupo: 'B',
   },
   c: {
-    inicio: 3,
+    inicio: 8,
     grupo: 'C',
   },
   d: {
-    inicio: 9,
+    inicio: 4,
     grupo: 'D',
   },
   e: {
-    inicio: 7,
+    inicio: 2,
     grupo: 'E',
   },
   reiniciar(x) {
@@ -65,7 +65,7 @@ const grupo12 = {
   },
 };
 
-// //Ano 2025 a partir do dia 01/01/2025
+// //Ano 2025 a partir do dia 01/01/2026
 // const grupo12 = {
 //   a: {
 //     inicio: 5,
@@ -124,7 +124,7 @@ const hoje = new Date();
 
 const exibirEscala = function (
   qtdeDias,
-  dataStatus = '01/01/2025',
+  dataStatus = '01/01/2026',
   grupoSelecionado = localStorage.getItem('grupoStorageSelecionado')
 ) {
   const dataInicial = new Date(dataStatus);
@@ -330,10 +330,10 @@ const exibirEscala = function (
 labelGrupoA.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'A') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2025', null);
+    exibirEscala(quantidadeDeDias, '01/01/2026', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'A');
-    exibirEscala(quantidadeDeDias, '01/01/2025', 'A');
+    exibirEscala(quantidadeDeDias, '01/01/2026', 'A');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -342,10 +342,10 @@ labelGrupoA.addEventListener('click', () => {
 labelGrupoB.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'B') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2025', null);
+    exibirEscala(quantidadeDeDias, '01/01/2026', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'B');
-    exibirEscala(quantidadeDeDias, '01/01/2025', 'B');
+    exibirEscala(quantidadeDeDias, '01/01/2026', 'B');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -354,10 +354,10 @@ labelGrupoB.addEventListener('click', () => {
 labelGrupoC.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'C') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2025', null);
+    exibirEscala(quantidadeDeDias, '01/01/2026', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'C');
-    exibirEscala(quantidadeDeDias, '01/01/2025', 'C');
+    exibirEscala(quantidadeDeDias, '01/01/2026', 'C');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -366,10 +366,10 @@ labelGrupoC.addEventListener('click', () => {
 labelGrupoD.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'D') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2025', null);
+    exibirEscala(quantidadeDeDias, '01/01/2026', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'D');
-    exibirEscala(quantidadeDeDias, '01/01/2025', 'D');
+    exibirEscala(quantidadeDeDias, '01/01/2026', 'D');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -378,10 +378,10 @@ labelGrupoD.addEventListener('click', () => {
 labelGrupoE.addEventListener('click', () => {
   if (localStorage.getItem('grupoStorageSelecionado') === 'E') {
     localStorage.setItem('grupoStorageSelecionado', null);
-    exibirEscala(quantidadeDeDias, '01/01/2025', null);
+    exibirEscala(quantidadeDeDias, '01/01/2026', null);
   } else {
     localStorage.setItem('grupoStorageSelecionado', 'E');
-    exibirEscala(quantidadeDeDias, '01/01/2025', 'E');
+    exibirEscala(quantidadeDeDias, '01/01/2026', 'E');
   }
   location.reload(true);
   // scrollingDiaAtual();
@@ -390,7 +390,7 @@ labelGrupoE.addEventListener('click', () => {
 //Executa a função exibirEscala após o término do carregamento do documento.
 document.addEventListener(
   'DOMContentLoaded',
-  exibirEscala(quantidadeDeDias, '01/01/2025')
+  exibirEscala(quantidadeDeDias, '01/01/2026')
 );
 
 //Verificando se estamos no fim do documento para poder exibir mais datas.
